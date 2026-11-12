@@ -10,11 +10,7 @@ app.title("Surprise")
 app.geometry("500x300")
 
 # 该函数在 Wayland 下通常无效
-app_image = Image.open("resources/logo.png")
-app_icon = ImageTk.PhotoImage(app_image)
-
-error_image = Image.open("resources/error.png")
-error_icon = ImageTk.PhotoImage(error_image)
+app_icon = ImageTk.PhotoImage(Image.open("resources/logo.png"))
 
 def set_window_icon(window, icon):
     window.iconbitmap()
@@ -28,9 +24,11 @@ pygame.mixer.set_num_channels(5)
 beep = pygame.mixer.Sound("resources/beep.ogg")
 beep.set_volume(0.15)
 
+surprise_app_icon = ImageTk.PhotoImage(Image.open("resources/warning.png"))
+
 error_img = ctk.CTkImage(
-    light_image=error_image,
-    dark_image=error_image,
+    light_image=Image.open("resources/error.png"),
+    dark_image=Image.open("resources/error.png"),
     size=(30, 30)
 )
 
@@ -50,7 +48,7 @@ def surprise():
         surprise_app = ctk.CTkToplevel(master=app)
         surprise_app.title("Warning")
         surprise_app.attributes("-topmost", True)
-        set_window_icon(surprise_app, error_icon)  # 该函数在 Wayland 下通常无效
+        set_window_icon(surprise_app, surprise_app_icon)  # 该函数在 Wayland 下通常无效
 
         width, height = 210, 50
         screen_width = surprise_app.winfo_screenwidth()
