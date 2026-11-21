@@ -10,7 +10,7 @@ app.title("Surprise")
 app.geometry("500x300")
 
 # 该函数在 Wayland 下通常无效
-app_icon = ImageTk.PhotoImage(Image.open("resources/logo.png"))
+app_icon = ImageTk.PhotoImage(Image.open("resources/icon.png"))
 
 def set_window_icon(window, icon):
     window.iconbitmap()
@@ -29,7 +29,7 @@ surprise_app_icon = ImageTk.PhotoImage(Image.open("resources/warning.png"))
 error_img = ctk.CTkImage(
     light_image=Image.open("resources/error.png"),
     dark_image=Image.open("resources/error.png"),
-    size=(30, 30)
+    size=(25, 25)
 )
 
 def surprise():
